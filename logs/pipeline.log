@@ -1,0 +1,16 @@
+2026-02-14 14:20:58 | INFO | Registros lidos: 4
+2026-02-14 14:20:58 | INFO | Validos: 1
+2026-02-14 14:20:58 | INFO | Invalidos: 3
+2026-02-14 14:20:58 | INFO | Relatorios gerados em /reports
+2026-02-14 14:20:58 | WARNING | Linha 2 | renda: não pode ser negativa (valor: -1000.00)
+2026-02-14 14:20:58 | WARNING | Linha 3 | idade: valor vazio (valor: )
+2026-02-14 14:20:58 | WARNING | Linha 4 | id: não é inteiro válido (valor: abc)
+2026-02-14 14:20:58 | INFO | Execucao finalizada com sucesso.
+2026-02-14 15:45:56 | INFO | Registros lidos: 4
+2026-02-14 15:45:56 | INFO | Validos: 1
+2026-02-14 15:45:56 | INFO | Invalidos: 3
+2026-02-14 15:45:56 | INFO | Relatorios gerados em /reports
+2026-02-14 15:45:56 | WARNING | Linha 2 | renda: não pode ser negativa (valor: -1000.00)
+2026-02-14 15:45:56 | WARNING | Linha 3 | idade: valor vazio (valor: )
+2026-02-14 15:45:56 | WARNING | Linha 4 | id: não é inteiro válido (valor: abc)
+2026-02-14 15:45:56 | INFO | Execucao finalizada com sucesso.

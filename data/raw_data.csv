@@ -1,5 +1,6 @@
 id,idade,renda,email
-2,130,5000.00,maria@email.com
-3,30,-1000,carlos@email.com
+
+2,25,5000.00,maria@email.com
+3,30,-1000.00,carlos@email.com
 4,,4200.00,anaemail.com
 abc,22,3000.00,teste@email.com

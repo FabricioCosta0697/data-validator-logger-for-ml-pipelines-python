@@ -1,7 +1,15 @@
 # data-validator-logger-for-ml-pipelines-python
-Validação de dados e registros de log para ML.
+Ideia central do projeto: construir um sistema em Python que prepara dados para Machine Learning, com foco em:
+validação;
+tratamento de erro;
+logs;
+previsibilidade.
 
-A ideia principal é registrar logs, erros de validação de dados (propositalmente) e solucionar csv vazios ou inválidos.
+O problema a ser resolvido: 
+“Recebo dados de várias fontes para treinar um modelo.
+Se esses dados estiverem quebrados, enviesados ou malformados, o modelo aprende errado — e isso vira vulnerabilidade.”  
+
+Registrar logs, erros de validação de dados (propositalmente) e solucionar arquivos csv (Comma-Separated Values, ou Valores Separados por Vírgula) vazios ou inválidos.
 
 Com dados em csv inválidos, pode se criar um reflexo de não confiança em inputs, mesmo parecendo legítimos. Modelos de IA quebram nestes pontos, assim podemos validar antes do erro ocorrer.
 
