@@ -118,8 +118,6 @@ Integração com um modelo simples de Machine Learning
 
 Validação configurável via JSON
 
-Implementação de CLI com argumentos
-
 Validação avançada de e-mails (regex)
 
 Integração com biblioteca de tipagem como Pydantic
@@ -136,3 +134,31 @@ Estruturação de pipelines de dados
 Fundamentos de segurança aplicada a IA
 
 O objetivo não é apenas validar dados, mas desenvolver pensamento crítico sobre confiabilidade, rastreabilidade e previsibilidade de sistemas.
+
+## Threat Model (simplificado)
+
+### Ativo protegido
+- Integridade dos dados usados para treinar/avaliar modelos de ML.
+- Confiabilidade das decisões geradas por modelos que dependem desses dados.
+
+### Superfície de ataque
+- Arquivos CSV recebidos de fontes externas (upload, integrações, exportações manuais).
+- Alterações silenciosas no schema (colunas faltando, nomes diferentes).
+- Valores malformados que burlam validação (tipos errados, campos vazios, valores fora do intervalo).
+
+### Ameaças principais (exemplos)
+- **Data poisoning (envenenamento de dados):** inserir registros enviesados ou maliciosos para influenciar o comportamento do modelo.
+- **Schema drift malicioso ou acidental:** mudanças em colunas que quebram o pipeline ou causam treino incorreto sem alertas.
+- **Input malformado:** valores inválidos levando a falhas de processamento, resultados errados ou comportamento imprevisível.
+
+### Controles implementados neste projeto
+- Validação de campos obrigatórios (erros estruturais).
+- Validação de tipos e regras de negócio (erros de conteúdo).
+- Logging estruturado para auditoria e rastreabilidade.
+- Relatórios separados para dados válidos e erros (CSV + JSON).
+- Testes automatizados para garantir comportamento esperado.
+
+### Limitações (intencionais)
+- Este projeto não detecta padrões estatísticos avançados de poisoning (ex.: drift, outliers complexos).
+- A validação de e-mail é simplificada.
+- Não há autenticação/assinatura do arquivo (integridade criptográfica), pois o foco é validação e rastreabilidade.

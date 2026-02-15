@@ -39,3 +39,48 @@
 2026-02-15 16:10:38 | WARNING | Linha 3 | idade: valor vazio (valor: )
 2026-02-15 16:10:38 | WARNING | Linha 4 | id: não é inteiro válido (valor: abc)
 2026-02-15 16:10:38 | INFO | Execucao finalizada com sucesso.
+2026-02-15 16:31:33 | INFO | Inicio do pipeline
+2026-02-15 16:31:33 | INFO | Input: data/raw_data.csv
+2026-02-15 16:31:33 | INFO | Reports: reports
+2026-02-15 16:31:33 | INFO | Log file: logs/pipeline.log
+2026-02-15 16:31:33 | INFO | Registros lidos: 4
+2026-02-15 16:31:33 | INFO | Validos: 1
+2026-02-15 16:31:33 | INFO | Invalidos: 3
+2026-02-15 16:31:33 | INFO | Relatorios gerados com sucesso
+2026-02-15 16:31:33 | INFO | - reports/valid_rows.csv
+2026-02-15 16:31:33 | INFO | - reports/errors.json
+2026-02-15 16:31:33 | WARNING | Linha 2 | idade: fora do intervalo 0–120 (valor: 300)
+2026-02-15 16:31:33 | WARNING | Linha 2 | renda: não pode ser negativa (valor: -1000.00)
+2026-02-15 16:31:33 | WARNING | Linha 3 | idade: valor vazio (valor: )
+2026-02-15 16:31:33 | WARNING | Linha 4 | id: não é inteiro válido (valor: abc)
+2026-02-15 16:31:33 | INFO | Execucao concluida com avisos (dados invalidos detectados).
+2026-02-15 16:32:43 | INFO | Inicio do pipeline
+2026-02-15 16:32:43 | INFO | Input: data/raw_data.csv
+2026-02-15 16:32:43 | INFO | Reports: reports
+2026-02-15 16:32:43 | INFO | Log file: logs/pipeline.log
+2026-02-15 16:32:43 | INFO | Registros lidos: 4
+2026-02-15 16:32:43 | INFO | Validos: 1
+2026-02-15 16:32:43 | INFO | Invalidos: 3
+2026-02-15 16:32:43 | INFO | Relatorios gerados com sucesso
+2026-02-15 16:32:43 | INFO | - reports/valid_rows.csv
+2026-02-15 16:32:43 | INFO | - reports/errors.json
+2026-02-15 16:32:43 | WARNING | Linha 2 | idade: fora do intervalo 0–120 (valor: 300)
+2026-02-15 16:32:43 | WARNING | Linha 2 | renda: não pode ser negativa (valor: -1000.00)
+2026-02-15 16:32:43 | WARNING | Linha 3 | idade: valor vazio (valor: )
+2026-02-15 16:32:43 | WARNING | Linha 4 | id: não é inteiro válido (valor: abc)
+2026-02-15 16:32:43 | INFO | Execucao concluida com avisos (dados invalidos detectados).
+2026-02-15 16:43:00 | INFO | Inicio do pipeline
+2026-02-15 16:43:00 | INFO | Input: data/raw_data.csv
+2026-02-15 16:43:00 | INFO | Reports: reports
+2026-02-15 16:43:00 | INFO | Log file: logs/pipeline.log
+2026-02-15 16:43:00 | INFO | Registros lidos: 4
+2026-02-15 16:43:00 | INFO | Validos: 1
+2026-02-15 16:43:00 | INFO | Invalidos: 3
+2026-02-15 16:43:00 | INFO | Relatorios gerados com sucesso
+2026-02-15 16:43:00 | INFO | - reports/valid_rows.csv
+2026-02-15 16:43:00 | INFO | - reports/errors.json
+2026-02-15 16:43:00 | WARNING | Linha 2 | idade: fora do intervalo 0–120 (valor: 300)
+2026-02-15 16:43:00 | WARNING | Linha 2 | renda: não pode ser negativa (valor: -1000.00)
+2026-02-15 16:43:00 | WARNING | Linha 3 | idade: valor vazio (valor: )
+2026-02-15 16:43:00 | WARNING | Linha 4 | id: não é inteiro válido (valor: abc)
+2026-02-15 16:43:00 | INFO | Execucao concluida com avisos (dados invalidos detectados).

@@ -1,13 +1,35 @@
+import argparse
+
 from reader import read_csv
 from validator import validate_rows
 from logger import setup_logger
 from report import save_valid_rows_csv, save_errors_json
 
-def main(): # Função principal do programa - carrega dados de um arquivo CSV e imprime o número de registros carregados
-    logger = setup_logger() # Configura o logger para registrar informações e erros durante a execução do programa
+
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(
+        description="Validador de dados para pipelines de ML com logs e relatórios."
+    )
+    parser.add_argument("-i", "--input", default="data/raw_data.csv",
+                        help="Caminho do CSV de entrada (default: data/raw_data.csv)")
+    parser.add_argument("--reports-dir", default="reports",
+                        help="Diretório de relatórios (default: reports)")
+    parser.add_argument("--log-file", default="logs/pipeline.log",
+                        help="Arquivo de log (default: logs/pipeline.log)")
+    return parser.parse_args()
+
+
+def main():
+    args = parse_args()
+    logger = setup_logger(args.log_file)
+
+    logger.info("Inicio do pipeline")
+    logger.info(f"Input: {args.input}")
+    logger.info(f"Reports: {args.reports_dir}")
+    logger.info(f"Log file: {args.log_file}")
 
     try:
-        rows = read_csv("data/raw_data.csv")
+        rows = read_csv(args.input)  # se falhar aqui, é erro operacional
         logger.info(f"Registros lidos: {len(rows)}")
 
         valid_rows, errors = validate_rows(rows)
@@ -16,19 +38,35 @@ def main(): # Função principal do programa - carrega dados de um arquivo CSV e
         logger.info(f"Validos: {len(valid_rows)}")
         logger.info(f"Invalidos: {invalid_count}")
 
-        save_valid_rows_csv(valid_rows, "reports/valid_rows.csv")
-        save_errors_json(errors, "reports/errors.json")
-        logger.info("Relatorios gerados em /reports")
+        # Relatórios: se falhar, também é erro operacional (IO)
+        valid_csv_path = f"{args.reports_dir}/valid_rows.csv"
+        errors_json_path = f"{args.reports_dir}/errors.json"
+
+        save_valid_rows_csv(valid_rows, valid_csv_path)
+        save_errors_json(errors, errors_json_path)
+
+        logger.info("Relatorios gerados com sucesso")
+        logger.info(f"- {valid_csv_path}")
+        logger.info(f"- {errors_json_path}")
+
+        # Erros de validação são "tratáveis": WARNING
+        for e in errors[:20]:
+            logger.warning(f"Linha {e.row_index} | {e.field}: {e.message} (valor: {e.raw_value})")
 
         if errors:
-            # Mostra alguns erros no console/log sem virar uma bíblia
-            for e in errors[:20]:
-                logger.warning(f"Linha {e.row_index} | {e.field}: {e.message} (valor: {e.raw_value})")
+            logger.info("Execucao concluida com avisos (dados invalidos detectados).")
+        else:
+            logger.info("Execucao concluida sem avisos.")
 
-        logger.info("Execucao finalizada com sucesso.")
-
+    except FileNotFoundError as e:
+        logger.error(f"Falha operacional: arquivo nao encontrado. {e}")
+    except ValueError as e:
+        # CSV vazio/sem header etc.
+        logger.error(f"Falha operacional: entrada invalida para processamento. {e}")
     except Exception as e:
-        logger.exception(f"Erro na execucao: {e}")
+        # Inesperado: bug, ambiente quebrado, etc.
+        logger.critical("Falha critica inesperada no pipeline.", exc_info=True)
+
 
 if __name__ == "__main__":
     main()
