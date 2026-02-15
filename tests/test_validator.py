@@ -23,15 +23,26 @@ class TestValidator(unittest.TestCase):
         self.assertEqual(len(valid_rows), 0)
         self.assertGreater(len(errors), 0)
 
+    def test_required_field_empty_stops_content_validation(self):
+        rows = [
+        {"id": "abc", "idade": "", "renda": "-10", "email": "invalido"}
+        ]
+
+        valid_rows, errors = validate_rows(rows)
+
+        self.assertEqual(len(valid_rows), 0)
+        self.assertGreaterEqual(len(errors), 1)
+
     def test_multiple_errors_same_row(self):
         rows = [
-            {"id": "abc", "idade": "", "renda": "-10", "email": "invalido"}
+        {"id": "abc", "idade": "200", "renda": "-10", "email": "invalido"}
         ]
 
         valid_rows, errors = validate_rows(rows)
 
         self.assertEqual(len(valid_rows), 0)
         self.assertGreaterEqual(len(errors), 3)
+
 
 if __name__ == "__main__":
     unittest.main()

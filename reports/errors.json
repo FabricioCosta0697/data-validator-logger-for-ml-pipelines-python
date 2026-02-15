@@ -1,6 +1,12 @@
 [
   {
     "row_index": 2,
+    "field": "idade",
+    "message": "fora do intervalo 0–120",
+    "raw_value": "300"
+  },
+  {
+    "row_index": 2,
     "field": "renda",
     "message": "não pode ser negativa",
     "raw_value": "-1000.00"
